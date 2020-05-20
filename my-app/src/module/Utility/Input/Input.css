@@ -1,0 +1,53 @@
+.input-field{
+    position: relative;
+    margin: 45px 0;
+}
+.input-field .label{
+    font-size: 16px;
+    color:#666;
+}
+.input-field input:not([type=radio]) ~ .label{
+    position: absolute;
+    z-index: 2;    
+    transition: all .3s ease;
+    left:5px;
+    top:10px;   
+    pointer-events: none;
+}
+.input-field input:not([type=radio]){
+    width: 100%;
+    border: none;
+    border-bottom: solid 1px #666;
+    padding: 10px;
+    box-sizing: border-box;
+}
+.input-field input:not([type=radio]):focus ~ .label,.input-field input:not([type=radio]) ~ .label.active{
+    top: -14px;
+    font-size: 12px;
+    color:#000;
+}
+.input-field input[type=radio]{
+    display: none;
+}
+.input-field input[type=radio] ~ label{
+    position: relative;
+    padding-left: 20px;
+}
+.input-field input[type=radio] ~ label:before{
+    content: "\f096";
+    font-family: FontAwesome;
+    position: absolute;
+    left: 0;
+    top:4px;
+    cursor: pointer;
+}
+.input-field input[type=radio]:disabled ~ label{
+    opacity: .5;
+    cursor: not-allowed;
+}
+.input-field input[type=radio]:disabled ~ label:before{
+    cursor: not-allowed;
+}
+.input-field input[type=radio]:checked ~ label:before{
+    content: "\f046";
+}

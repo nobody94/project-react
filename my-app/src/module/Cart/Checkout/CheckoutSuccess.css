@@ -1,0 +1,22 @@
+.checkout-success{
+    text-align: center;
+    margin-top: 60px;
+    margin-bottom: 50px;
+}
+.checkout-success h3{
+    font-size: 30px;
+    margin-top: 0;
+    margin-bottom: 30px;
+    line-height: 100%;
+}
+.checkout-success p{
+    font-size: 18px;
+}
+.checkout-success .action{
+    margin-top: 30px;
+}
+@media (max-width:480px){
+    .checkout-success h3{
+        font-size: 22px;
+    }
+}

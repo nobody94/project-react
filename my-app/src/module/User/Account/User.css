@@ -1,0 +1,27 @@
+.user-page{
+    margin-top: 30px;
+    margin-bottom: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 850px;
+    max-width: 100%;    
+}
+.user-information{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 60px;
+}
+.user-information .content{
+    width: calc(380 * 100% / 850 );
+}
+.user-page .title{
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 40px;
+    font-size: 38px;
+    width: 100%;
+}
+.user-page h4{
+    font-size: 20px;
+}
