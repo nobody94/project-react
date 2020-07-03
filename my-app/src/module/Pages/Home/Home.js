@@ -3,23 +3,23 @@ import './Home.css';
 import {connect} from 'react-redux';
 import Item from './HomeItem';
 
-class Home extends React.Component { 
-  ListItem(){
-    return this.props.data.map((item)=>{
-      return(
-        <Item key={item.id} imageUrl={item.imageUrl} title={item.title} linkUrl={item.linkUrl} size={item.size}></Item> 
-      )
-    });
-  }
-  render(){ 
-    return (
-      <div className="container">
-        <div className="home-banner">
-          {this.ListItem()}
-        </div>
+function Home(props) { 
+  return (
+    <div className="container">
+      <div className="home-banner">         
+        {
+          props.data.map(
+            (item)=><Item 
+                      key={item.id} 
+                      imageUrl={item.imageUrl} 
+                      title={item.title} 
+                      linkUrl={item.linkUrl} 
+                      size={item.size}/>
+          )
+        }
       </div>
-    );
-  }
+    </div>
+  );
 }
 
 function mapStateToProps(state){
