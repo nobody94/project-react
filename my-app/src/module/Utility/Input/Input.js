@@ -1,19 +1,23 @@
 import React from 'react';
 import './Input.css';
 
-class Input extends React.Component {
-    constructor(props){
-        super(props);        
-      }  
-    render(){
-        let label = this.props.label ? <label className={`label ${this.props.value.length ? 'active' : ''}`} for={this.props.for}>{this.props.label}</label> : null;
-        return(
-            <div className="input-field">
-                <input className="input-text" {...this.props}></input>
-                {label}
-            </div>
-        );
-    }
+function Input(props) {
+    let label = props.label 
+        ? <label className={`label ${props.value.length ? 'active' : ''}`} for={props.for}>{props.label}</label> 
+        : null;
+    return(
+        <div className="input-field">
+            <input className="input-text"
+            name={props.name}
+            type={props.type || 'text' }
+            value={props.value}
+            onChange={props.onChange}
+            placeholder={props.placeholder}
+            required={required || false}
+            ></input>
+            {label}
+        </div>
+    );
 } 
 
 export default Input;

@@ -62,9 +62,9 @@ class Detail extends React.Component{
     } 
     ListItem(){     
         // console.log(this.state.recentOrder ? Object.values(this.state.recentOrder) : '');    
-        return this.state.recentOrder ? Object.values(this.state.recentOrder).map((item)=>{
+        return this.state.recentOrder ? Object.values(this.state.recentOrder).map((item, key)=>{
             for(var i = 0 ; i< Object.values(this.state.recentOrder).length ;i++){
-                return <RecentOrder key={item.orderNum} orderNum={item.orderNum} item={item.item} total={item.totalPrice}></RecentOrder>;
+                return <RecentOrder key={key} orderNum={item.orderNum} item={item.item} total={item.totalPrice}></RecentOrder>;
             }
         })
         : '';        
