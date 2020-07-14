@@ -1,73 +1,60 @@
-import React from 'react';
+import React,{useState} from 'react';
 import { connect } from 'react-redux';
 import {addToCart} from '../../Cart/redux/cart-action';
 import {Redirect} from 'react-router-dom';
 import {Loading} from '../../Utility/Loading/Loading';
-class CategoryItem extends React.Component {
-  constructor(props){
-    super(props);  
-    this.state={
-      isAddCart:false,
-      loading:false,
-      isCheckout:false
-    };
-   this.addCartHandle = this.addCartHandle.bind(this);
-   this.closeBtn = this.closeBtn.bind(this); 
-   this.goCheckout = this.goCheckout.bind(this);
-  } 
-  goCheckout(){
-    this.setState({
-      loading:true
-    })
+
+function Item(props){  
+  const [isAddCart,isAddCartHandle] = useState(false);
+  const [loading,loadingHandle] = useState(false);
+  const [isCheckout,isCheckoutHandle] = useState(false);
+  
+  const addCartHandle = (data) => {
+    // console.log(data);
+    loadingHandle(true);
     setTimeout(()=>{
-      this.setState({
-        loading:false,
-        isCheckout:true
-      })  
-    },1000)     
-  }
-  addCartHandle(){
-    this.setState({
-      loading:true
-    })
-    setTimeout(()=>{
-      this.setState({
-        isAddCart:true, 
-        loading:false    
-      });
-      this.props.addToCart(this.props.product);
+      loadingHandle(false);
+      isAddCartHandle(true)    
+      props.addToCart(data);
     },1000);
   }
-  closeBtn(){
-    this.setState({
-      isAddCart:false
-    })
+  
+  const closeBtn = () => {
+    isAddCartHandle(false)  
   }
-  render(){    
-    return (
-      <div className="item">
-        <div className="image-wrapper">
-            <img src={this.props.imageUrl}></img>
-            <button className="action add" onClick={this.addCartHandle}>Add to cart</button>
-        </div>
-        <div className="content">
-          <h4 className="product-name">{this.props.name}</h4>
-          <p className="price">{this.props.price}</p>
-        </div>
-        {
-          this.state.isAddCart 
+  
+  const goCheckout = () => {
+    loadingHandle(true);
+    setTimeout(()=>{
+      loadingHandle(false);
+      isCheckoutHandle(true);
+    },1000)    
+  }
+  
+  return(
+    <div className="item">
+      <div className="image-wrapper">
+        <img src={props.imageUrl}></img>
+        <button className="action add" onClick={()=>addCartHandle(props.product)}>Add to cart</button>
+      </div>
+      <div className="content">
+        <h4 className="product-name">{props.name}</h4>
+        <p className="price">{props.price}</p>
+      </div>
+      {
+          isAddCart 
           ? <div className="popup add-cart">
               <div className="content-popup">
-                <p>You been add <strong>{this.props.name}</strong> to cart</p>
+                <p>You been add <strong>{props.name}</strong> to cart</p>
                 <div className="prd-image">
-                <img src={this.props.imageUrl}></img>
+                <img src={props.imageUrl}></img>
                 </div>
-                <p>Your cart has {this.props.counter} {this.props.counter >= 2 ? 'items' : 'item'}</p>
+                <p>Your cart has {props.counter} {props.counter >= 2 ? 'items' : 'item'}</p>
                 <div className="actions">
-                  <button className="action" onClick={this.closeBtn}>Continue Shopping</button>
-                  <span className="action" onClick={this.goCheckout}>Go to checkout</span> 
+                  <button className="action" onClick={closeBtn}>Continue Shopping</button>
+                  <span className="action" onClick={goCheckout}>Go to checkout</span> 
                   {
-                      this.state.isCheckout ?
+                      isCheckout ?
                       <Redirect to='/checkout'></Redirect>
                       :null
                     } 
@@ -77,18 +64,17 @@ class CategoryItem extends React.Component {
           : null
         }
         {
-          this.state.loading
+          loading
           ? <Loading></Loading>
           : null
         }
-      </div>
-    );
-  }
+    </div>
+  )
 }
 
 const mapDispatchToProps = dispatch => {
   return {     
-      addToCart: (item) => {dispatch(addToCart(item))}
+    addToCart: (item) => {dispatch(addToCart(item))}
   }
 };
 function mapStateToProps(state){
@@ -96,4 +82,4 @@ function mapStateToProps(state){
     counter:state.cartReducer.counter
   }    
 }
-export default connect(mapStateToProps,mapDispatchToProps)(CategoryItem);
+export default connect(mapStateToProps,mapDispatchToProps)(Item);
