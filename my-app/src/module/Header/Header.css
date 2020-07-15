@@ -1,0 +1,16 @@
+
+/*header*/
+.header .container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+.header{
+    padding: 20px 0;
+    position: relative;
+}
+.header .header-content{
+    display: flex;
+    align-items: center;
+}

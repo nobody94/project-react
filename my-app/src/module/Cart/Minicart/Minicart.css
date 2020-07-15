@@ -1,0 +1,114 @@
+.minicart{
+    position: relative;
+}
+/*close*/
+.minicart-close{
+    width: 20px;
+    height: 15px;
+    position: absolute;
+    top:10px;
+    right:10px;
+    cursor: pointer;
+}
+.minicart-close:before,.minicart-close:after{
+    content: "";
+    position: absolute;
+    width: 1.5px;
+    height: 100%;
+    left:50%;
+    top:50%;
+    background-color: #333;
+}
+.minicart-close:before{
+    transform: translate(-50%,-50%) rotate(45deg);
+}
+.minicart-close:after{
+    transform: translate(-50%,-50%) rotate(-45deg);
+}
+/*content*/
+.minicart-content{
+    display: none;
+    position: absolute;
+    right: 0;
+    top:calc(100% + 7px);
+    background-color: #fff;
+    padding: 30px 20px;
+    width: 320px;
+    box-shadow: 0px 0px 5px rgba(0,0,0,.3);
+    z-index: 90;
+    box-sizing: border-box;
+}
+.minicart-content.active{
+    display: block;
+}
+.minicart-content .item-wrapper .item{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+.minicart-content .item-wrapper .item:not(:last-child){
+    margin-bottom: 20px;
+}
+.minicart-content .item-wrapper .block-image{
+    width: 100px;
+}
+.minicart-content .item-wrapper .detail{
+    flex:1;
+    padding-left: 15px;
+}
+.minicart-content .item-wrapper .product-name{
+    margin-top: 0;
+    margin-bottom: 0;
+    text-transform: capitalize;
+    font-size: 18px;
+    font-weight: 400;
+}
+.minicart-content .item-wrapper .price-box{
+    margin-top: 0;
+    margin-bottom: 0;
+}
+.minicart-content .item-wrapper .quantity:after{
+    content: "x";
+    margin:0 5px;
+}
+.minicart-content .action{
+    width: 100%;
+    background-color: #333;
+    border-color: #333;
+    color: #fff;
+}
+.minicart-content .action:hover{
+    background-color: transparent;
+    color: #333;
+}
+.minicart-content .item-wrapper{
+    max-height: 300px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+.minicart-content .message{
+    text-align: center;
+}
+/*icon*/
+.minicart-icon{    
+    display: block;
+    cursor: pointer;
+}
+/*number*/
+.minicart-number{
+    position: absolute;
+    top:53%;
+    left: 50%;
+    z-index: 10;
+    transform: translate(-50%,-50%);
+    font-size: 11px;
+    font-weight: 600;
+}
+@media(max-width:480px){
+    .minicart{
+        position: static;
+    }
+    .minicart .minicart-icon{
+        position: relative;
+    }
+}

@@ -1,0 +1,28 @@
+.recent-order .order-item .image-wrapper{
+    width: 100px;
+}
+.recent-order .order:not(:last-child){
+    margin-bottom: 40px;
+}
+.recent-order .order-view{
+    cursor: pointer;
+}
+.recent-order .order-detail{
+    display: flex;
+    flex-wrap: wrap; 
+}
+.order-detail .order-item{
+    width: calc(100%/4 - 10.5px);
+}
+.order-detail .order-item:not(:nth-child(4n)){
+    margin-right: 14px;
+}
+.order-detail .total{
+    width: 100%;
+}
+.recent-order .order{
+    margin-bottom: 40px;
+}
+.order-item .prd-name{
+    margin-top: 0;
+}
