@@ -16,11 +16,6 @@ class RecentOreder extends React.Component{
         })
     }
     render(){ 
-        const order =  this.props.item.map((item)=>{      
-            for(var i =0 ; i< this.props.item.length ;i++){         
-              return  <Order key={item.id} name={item.name} price={item.price} quantity={item.quantity} imageUrl={item.imageUrl}></Order>
-            }  
-          }); 
         return(
             <div className="recent-order">
                 <p className="order-view" onClick={this.viewMore}>Order: <strong>{this.props.orderNum}</strong></p>
@@ -28,7 +23,9 @@ class RecentOreder extends React.Component{
                     this.state.isClick
                     ? <div className="order">
                         <div className="order-detail">
-                        {order}
+                        {
+                            this.props.item.map((item, key)=><Order key={key} name={item.name} price={item.price} quantity={item.quantity} imageUrl={item.imageUrl}></Order>)
+                        }
                         </div>
                         <p className="total">Total: <strong>{this.props.total}</strong></p> 
                     </div>

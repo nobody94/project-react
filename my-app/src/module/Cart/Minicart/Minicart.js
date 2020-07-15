@@ -5,6 +5,7 @@ import Item from './MinicartItem';
 import {connect} from 'react-redux';
 import './Minicart.css';
 import {Loading} from '../../Utility/Loading/Loading';
+
 class Minicart extends React.Component {
     constructor(props){
       super(props);

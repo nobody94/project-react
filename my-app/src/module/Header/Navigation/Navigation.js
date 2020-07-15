@@ -5,6 +5,7 @@ import {connect} from 'react-redux';
 import './Navigation.css';
 import MediaQuery from 'react-responsive';
 import {Loading} from '../../Utility/Loading/Loading';
+
 class Navigation extends React.Component{
     constructor(props){
         super(props);
@@ -42,10 +43,9 @@ class Navigation extends React.Component{
             window.location = `/logout`;  
         },1000)       
     }  
-    render(){  
-        const isOn =  this.props.mobileNav ? 'active' : '';   
+    render(){    
         return (
-            <nav className={`nav-section ${isOn}`}>
+            <nav className={`nav-section ${this.props.mobileNav ? 'active' : ''}`}>
                  <MediaQuery maxDeviceWidth={767}>
                     <span className="close-mobile-menu" onClick={this.props.closeBtn}>Menu</span>
                 </MediaQuery>               

@@ -3,7 +3,7 @@ import './Input.css';
 
 function Input(props) {
     let label = props.label 
-        ? <label className={`label ${props.value.length ? 'active' : ''}`} for={props.for}>{props.label}</label> 
+        ? <label className={`label ${props.value.length ? 'active' : ''}`} htmlFor={props.for}>{props.label}</label> 
         : null;
     return(
         <div className="input-field">
@@ -12,8 +12,8 @@ function Input(props) {
             type={props.type || 'text' }
             value={props.value}
             onChange={props.onChange}
-            placeholder={props.placeholder}
-            required={required || false}
+            placeholder={props.placeholder || ''}
+            required={props.required || false}
             ></input>
             {label}
         </div>

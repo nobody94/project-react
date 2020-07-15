@@ -47,7 +47,7 @@ function Item(props){
               <div className="content-popup">
                 <p>You been add <strong>{props.name}</strong> to cart</p>
                 <div className="prd-image">
-                <img src={props.imageUrl}></img>
+                <img src={props.imageUrl} ></img>
                 </div>
                 <p>Your cart has {props.counter} {props.counter >= 2 ? 'items' : 'item'}</p>
                 <div className="actions">
